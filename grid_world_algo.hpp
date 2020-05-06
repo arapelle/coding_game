@@ -81,7 +81,7 @@ Grid<Mark> spread_from_start(const GridWorld& world, const Position& start,
                 mark_to_update = mark;
                 position_queue.push(npos);
                 if constexpr (!std::is_same_v<SquareVisitor, Dummy_square_visitor>)
-                    visit(world, start, mark_to_update);
+                    visit(world, npos, mark_to_update);
             }
         }
     }
