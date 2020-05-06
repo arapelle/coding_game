@@ -18,6 +18,7 @@ public:
     {}
 
     bool is_free() const { return value_; }
+    void set_value(bool value) { value_ = value; }
 
 private:
     bool value_;
@@ -37,11 +38,12 @@ struct AccessibilityTest
 void compilation_test()
 {
     Grid_world world(8, 6, Square(true));
+    const Grid_world& cworld = world;
     AccessibilityTest acc_test;
     Position start(3,2);
     Position dest(6,4);
     spread_from_start(world, start, acc_test);
-    reachable_squares(world, start, acc_test, 2);
+    reachable_squares(cworld, start, acc_test, 2);
     reachable_positions(world, start, acc_test, 2);
     direction_to(world, start, dest, acc_test);
 }

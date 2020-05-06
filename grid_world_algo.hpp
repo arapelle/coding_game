@@ -42,15 +42,15 @@ struct No_stop_condition
 
 /**
  * AccessibilityTest: bool operator()(const GridWorld& world, const Position& position, const Mark& mark)
- * SquareVisitor: void operator()(const GridWorld& world, const Position& position, Mark& mark)
+ * SquareVisitor: void operator()(GridWorld& world, const Position& position, Mark& mark)
  * StopCondition: void operator()(const Grid<Mark>& marks)
  */
 template <typename GridWorld, typename AccessibilityTest,
           typename SquareVisitor = Dummy_square_visitor, typename StopCondition = No_stop_condition>
-Grid<Mark> spread_from_start(const GridWorld& world, const Position& start,
+Grid<Mark> spread_from_start(GridWorld& world, const Position& start,
                              AccessibilityTest accessibility_test,
                              [[maybe_unused]] SquareVisitor visit = SquareVisitor(),
-                             [[maybe_unused]] StopCondition stop_condition = StopCondition())
+                             StopCondition stop_condition = StopCondition())
 {
     Grid<Mark> marks(world.width(), world.height(), Mark::invalid_mark());
     std::queue<Position> position_queue;
@@ -93,19 +93,21 @@ Grid<Mark> spread_from_start(const GridWorld& world, const Position& start,
  * reachable_squares(grid, pos, accessibility_test, radius) -> vector<Const_iterator>
  */
 template <typename GridWorld, typename AccessibilityTest>
-std::vector<typename GridWorld::Const_iterator>
-reachable_squares(const GridWorld& world, const Position& start, AccessibilityTest accessibility_test,
+std::vector<Grid_iterator<GridWorld*>>
+reachable_squares(GridWorld& world, const Position& start, AccessibilityTest accessibility_test,
                   unsigned radius = std::numeric_limits<unsigned>::max())
 {
-    std::vector<typename GridWorld::Const_iterator> viter;
+    using Iterator = Grid_iterator<GridWorld*>;
+
+    std::vector<Iterator> viter;
 
     auto radius_accessibility_test = [&](const GridWorld& world, const Position& position, const Mark& mark)
     {
         return mark.distance() <= radius && accessibility_test(world, position, mark);
     };
-    auto visit = [&](const GridWorld& world, const Position& position, Mark&)
+    auto visit = [&](GridWorld& world, const Position& position, Mark&)
     {
-        viter.push_back(world.make_iterator(position));
+        viter.push_back(Iterator(&world, position));
     };
     spread_from_start(world, start, radius_accessibility_test, visit);
 
