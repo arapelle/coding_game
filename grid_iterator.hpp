@@ -36,11 +36,14 @@ public:
         return iter;
     }
 
-    const auto& operator*() const { return grid_ptr_->get(pos_); }
-    auto& operator*() { return grid_ptr_->get(pos_); }
+    const auto& operator*() const { return value(); }
+    auto& operator*() { return value(); }
 
-    const auto& value() const { return *this; }
-    auto& value() { return *this; }
+    const auto* operator->() const { return &value(); }
+    auto* operator->() { return &value(); }
+
+    inline const auto& value() const { return grid_ptr_->get(pos_); }
+    inline auto& value() { return grid_ptr_->get(pos_); }
 
     const Position& position() const { return pos_; }
 
