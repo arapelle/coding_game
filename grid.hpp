@@ -109,6 +109,11 @@ public:
         this->mutable_dimension() = Dimension(width, height);
     }
 
+    void resize(const Dimension& dimension, const Type& value = Type())
+    {
+        resize(dimension.x, dimension.y, value);
+    }
+
     void swap(Grid& other)
     {
         Base::swap(other);
