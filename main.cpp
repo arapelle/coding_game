@@ -6,10 +6,7 @@
 
 //grid_world API: (grid_world_algo.hpp)
 /*
-.Grid<Mark>& iparam
-.Exploration
 .spread_from_start -> spread_from_one_position
-  .Mark created by Navigation
   .accessibility_test(world, from_pos, to_pos, mark)
 (.CostEval)
 (.Heuristic)
@@ -27,7 +24,7 @@ void test_grid()
     for (auto iter = gdata.begin(), end_iter = gdata.end(); iter != end_iter; ++iter)
     {
         std::cout << "[" << iter.position() << "]: " << *iter << ", ";
-        if (iter.position().x == 0)
+        if (iter.position().x == (signed)gdata.width() - 1)
             std::cout << '\n';
     }
 }
@@ -36,5 +33,6 @@ int main()
 {
     std::cout << "main" << std::endl;
     test_grid();
+    compilation_test();
     return EXIT_SUCCESS;
 }
