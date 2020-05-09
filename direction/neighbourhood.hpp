@@ -1,6 +1,6 @@
 #pragma once
 
-#include "direction.hpp"
+#include "direction/direction.hpp"
 #include <vector>
 
 template <typename Vec2>

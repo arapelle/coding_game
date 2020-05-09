@@ -1,7 +1,7 @@
 #pragma once
 
-#include "vec2i.hpp"
-#include "vec2u.hpp"
+#include "vec2/vec2i.hpp"
+#include "vec2/vec2u.hpp"
 
 using Position = Vec2i;
 using Offset = Vec2i;

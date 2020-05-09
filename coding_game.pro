@@ -4,27 +4,28 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        algo.cpp \
-        direction.cpp \
-        grid_algo.cpp \
-        grid_base.cpp \
-        grid_world_algo.cpp \
+        core/algo.cpp \
+        direction/direction.cpp \
+        grid/exploration/spreading_exploration.cpp \
+        grid/grid_algo.cpp \
+        grid/grid_base.cpp \
         main.cpp \
-        vec2i.cpp \
-        vec2u.cpp
+        vec2/vec2i.cpp \
+        vec2/vec2u.cpp
 
 HEADERS += \
-    algo.hpp \
-    default_arg.hpp \
-    direction.hpp \
-    grid.hpp \
-    grid_algo.hpp \
-    grid_base.hpp \
-    grid_iterator.hpp \
-    grid_types.hpp \
-    grid_view.hpp \
-    grid_world_algo.hpp \
-    iterator_range.hpp \
-    neighbourhood.hpp \
-    vec2i.hpp \
-    vec2u.hpp
+    core/algo.hpp \
+    core/default_arg.hpp \
+    direction/direction.hpp \
+    direction/neighbourhood.hpp \
+    grid/exploration/spreading_exploration.hpp \
+    grid/grid.hpp \
+    grid/grid_algo.hpp \
+    grid/grid_base.hpp \
+    grid/grid_iterator.hpp \
+    grid/grid_types.hpp \
+    grid/grid_view.hpp \
+    grid/iterator_range.hpp \
+    grid/neighbourhood.hpp \
+    vec2/vec2i.hpp \
+    vec2/vec2u.hpp

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "grid.hpp"
-#include "grid_algo.hpp"
-#include "neighbourhood.hpp"
-#include "default_arg.hpp"
+#include "grid/grid.hpp"
+#include "grid/grid_algo.hpp"
+#include "direction/neighbourhood.hpp"
+#include "core/default_arg.hpp"
 #include <queue>
 #include <vector>
 #include <type_traits>

@@ -1,5 +1,4 @@
-#include "grid_world_algo.hpp"
-#include "grid.hpp"
+#include "grid/exploration/spreading_exploration.hpp"
 
 #include <iostream>
 #include <cstdlib>
