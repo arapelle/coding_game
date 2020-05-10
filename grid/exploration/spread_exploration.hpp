@@ -58,10 +58,10 @@ protected:
 };
 
 template <typename Action, typename MarkBase = Basic_mark>
-class Action_mark_base : public MarkBase
+class Action_mark : public MarkBase
 {
 public:
-    explicit Action_mark_base(const Position& position = Position())
+    explicit Action_mark(const Position& position = Position())
         : MarkBase(position),
           action_(Directions4::undefined_direction)
     {}
@@ -69,13 +69,13 @@ public:
     inline const Action& action() const { return action_; }
     inline Action& action() { return action_; }
 
-    void set_visited(Position neighbour_position, Action&& action, const Action_mark_base& nmark)
+    void set_visited(Position neighbour_position, Action&& action, const Action_mark& nmark)
     {
         this->MarkBase::set_visited(neighbour_position, static_cast<const Action&>(action), nmark);
         action_ = std::move<Action>(action);
     }
 
-    void set_visited(Position neighbour_position, const Action& action, const Action_mark_base& nmark)
+    void set_visited(Position neighbour_position, const Action& action, const Action_mark& nmark)
     {
         this->MarkBase::set_visited(neighbour_position, action, nmark);
         action_ = action;
@@ -86,17 +86,17 @@ private:
 };
 
 template <typename MarkBase = Basic_mark>
-class Link_mark_base : public MarkBase
+class Link_mark : public MarkBase
 {
 public:
-    explicit Link_mark_base(const Position& position = Position())
+    explicit Link_mark(const Position& position = Position())
         : MarkBase(position), link_position_(position)
     {}
 
     inline const Position& link_position() const { return link_position_; }
 
     template <class Action>
-    void set_visited(Position neighbour_position, Action&& action, const Link_mark_base& nmark)
+    void set_visited(Position neighbour_position, Action&& action, const Link_mark& nmark)
     {
         this->MarkBase::set_visited(neighbour_position, std::forward<Action>(action), nmark);
         link_position_ = neighbour_position;
@@ -107,12 +107,12 @@ private:
 };
 
 template <typename Action, typename MarkBase = Basic_mark>
-using Step_mark_base = Link_mark_base<Action_mark_base<Action, MarkBase>>;
+using Step_mark = Link_mark<Action_mark<Action, MarkBase>>;
 
 template <typename Direction, typename MarkBase = Basic_mark>
-class Forward_step_mark : public Step_mark_base<Direction, MarkBase>
+class Forward_step_mark : public Step_mark<Direction, MarkBase>
 {
-    using Base = Step_mark_base<Direction, MarkBase>;
+    using Base = Step_mark<Direction, MarkBase>;
 
 public:
     explicit Forward_step_mark(const Position& position = Position())
@@ -125,9 +125,9 @@ public:
 };
 
 template <typename Direction, typename MarkBase = Basic_mark>
-class Backward_step_mark : public Step_mark_base<Direction, MarkBase>
+class Backward_step_mark : public Step_mark<Direction, MarkBase>
 {
-    using Base = Step_mark_base<Direction, MarkBase>;
+    using Base = Step_mark<Direction, MarkBase>;
 
 public:
     explicit Backward_step_mark(const Position& position = Position())
