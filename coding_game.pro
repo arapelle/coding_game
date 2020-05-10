@@ -6,7 +6,7 @@ CONFIG -= qt
 SOURCES += \
         core/algo.cpp \
         direction/direction.cpp \
-        grid/exploration/spreading_exploration.cpp \
+        grid/exploration/spread_exploration.cpp \
         grid/grid_algo.cpp \
         grid/grid_base.cpp \
         main.cpp \
@@ -18,7 +18,7 @@ HEADERS += \
     core/default_arg.hpp \
     direction/direction.hpp \
     direction/neighbourhood.hpp \
-    grid/exploration/spreading_exploration.hpp \
+    grid/exploration/spread_exploration.hpp \
     grid/grid.hpp \
     grid/grid_algo.hpp \
     grid/grid_base.hpp \

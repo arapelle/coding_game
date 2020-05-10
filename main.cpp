@@ -1,17 +1,13 @@
-#include "grid/exploration/spreading_exploration.hpp"
+#include "grid/exploration/spread_exploration.hpp"
 
 #include <iostream>
 #include <cstdlib>
 
-//grid_world API: (grid_world_algo.hpp)
+//exploration API: (spread_exploration.hpp)
 /*
-.spread_from_start -> spread_from_one_position
-  .accessibility_test(world, from_pos, to_pos, mark)
 (.CostEval)
 (.Heuristic)
 */
-
-//TODO spread_from_dest(grid, dest, is_reachable, stop_condition) -> Grid<Mark>
 
 //TODO command.hpp: class Command; class Command_vector : vector<unique_ptr<Command>>; string_to_commands(string) -> Command_vector
 
