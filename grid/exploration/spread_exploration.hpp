@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "mark.hpp"
 #include "mark_grid.hpp"

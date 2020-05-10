@@ -34,6 +34,5 @@ HEADERS += \
     grid/grid_types.hpp \
     grid/grid_view.hpp \
     grid/iterator_range.hpp \
-    grid/neighbourhood.hpp \
     vec2/vec2i.hpp \
     vec2/vec2u.hpp

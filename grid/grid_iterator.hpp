@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "grid_types.hpp"
 

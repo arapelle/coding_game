@@ -1,6 +1,6 @@
 #pragma once
 
-#include <grid/grid_types.hpp>
+#include "grid/grid_types.hpp"
 #include <cstdint>
 
 enum class Exploration_square_status : int8_t
