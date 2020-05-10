@@ -1,8 +1,8 @@
+#include "direction_to.hpp"
+#include "reachable_positions.hpp"
+#include "reachable_squares.hpp"
 #include "spread_exploration.hpp"
-
-Basic_mark::Basic_mark(Exploration_square_status status)
-    : status_(status)
-{}
+#include "exploration_rules/torus_directions4_exploration_rules.hpp"
 
 //--------------------------------------------------------------------------------
 

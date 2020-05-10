@@ -18,6 +18,14 @@ HEADERS += \
     core/default_arg.hpp \
     direction/direction.hpp \
     direction/neighbourhood.hpp \
+    grid/exploration/direction_to.hpp \
+    grid/exploration/exploration_rules/decorator/torus.hpp \
+    grid/exploration/exploration_rules/directions4_exploration_rules.hpp \
+    grid/exploration/exploration_rules/torus_directions4_exploration_rules.hpp \
+    grid/exploration/mark.hpp \
+    grid/exploration/mark_grid.hpp \
+    grid/exploration/reachable_positions.hpp \
+    grid/exploration/reachable_squares.hpp \
     grid/exploration/spread_exploration.hpp \
     grid/grid.hpp \
     grid/grid_algo.hpp \
